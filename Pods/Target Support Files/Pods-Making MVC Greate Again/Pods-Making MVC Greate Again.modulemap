@@ -1,0 +1,6 @@
+framework module Pods_Making_MVC_Greate_Again {
+  umbrella header "Pods-Making MVC Greate Again-umbrella.h"
+
+  export *
+  module * { export * }
+}
