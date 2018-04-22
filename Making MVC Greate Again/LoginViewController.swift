@@ -8,14 +8,26 @@
 
 import UIKit
 
-class LoginViewController: ViewController<LoginView> {
+class LoginViewController: ViewController<LoginView>, KeyboardObserving {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		customView.delegate = self
+		registerForKeyboardEvents()
 	}
-	
+
+	func keyboardWillShow(_ notification: Notification) {
+		customView.handleKeyboardWillShow(notification)
+	}
+
+	func keyboardWillHide(_ notification: Notification) {
+		customView.handleKeyboardWillHide(notification)
+	}
+
+	deinit {
+		unregisterFromKeyboardEvents()
+	}
 }
 
 // MARK: - LoginViewDelegate

@@ -13,7 +13,7 @@ protocol LoginViewDelegate: class {
 	func loginView(_ view: LoginView, didTapLoginButton button: UIButton)
 }
 
-class LoginView: View {
+class LoginView: View, KeyboardControllable {
 
 	weak var delegate: LoginViewDelegate?
 
@@ -56,14 +56,32 @@ class LoginView: View {
 		loginButton.addTarget(self, action: #selector(didTapLoginButton(_:)), for: .touchUpInside)
 		resetButton.addTarget(self, action: #selector(didTapResetButton(_:)), for: .touchUpInside)
 		addSubview(stackView)
+
+		let tap = UITapGestureRecognizer(target: self, action: #selector(didTap))
+		addGestureRecognizer(tap)
 	}
 
 	override func layoutViews() {
 		stackView.snp.makeConstraints { make in
-			make.top.equalToSuperview().inset(100)
 			make.leading.equalToSuperview().inset(20)
 			make.trailing.equalToSuperview().inset(20)
+			make.bottom.equalToSuperview().inset(40)
 		}
+	}
+
+	func handleKeyboardWillShow(_ notification: Notification) {
+		let keyboardHeight = notification.keyboardSize?.height ?? 250
+		stackView.snp.updateConstraints { make in
+			make.bottom.equalToSuperview().inset(40 + keyboardHeight)
+		}
+		layoutIfNeeded()
+	}
+
+	func handleKeyboardWillHide(_ notification: Notification) {
+		stackView.snp.updateConstraints { make in
+			make.bottom.equalToSuperview().inset(40)
+		}
+		layoutIfNeeded()
 	}
 
 }
@@ -79,6 +97,10 @@ private extension LoginView {
 		endEditing(false)
 		emailTextField.text = ""
 		passwordTextField.text = ""
+	}
+
+	@objc func didTap() {
+		endEditing(true)
 	}
 
 }
