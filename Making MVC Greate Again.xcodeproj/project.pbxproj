@@ -15,6 +15,8 @@
 		070B069520795F83008880C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B069420795F83008880C8 /* Extensions.swift */; };
 		070B069820795FA6008880C8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B069720795FA6008880C8 /* LoginView.swift */; };
 		070B069A20795FB8008880C8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070B069920795FB8008880C8 /* LoginViewController.swift */; };
+		07A36233208C93630098740B /* KeyboardControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A36232208C93630098740B /* KeyboardControllable.swift */; };
+		07A36235208C941F0098740B /* KeyboardObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A36234208C941F0098740B /* KeyboardObserving.swift */; };
 		F68C32C1FE498C51EBAB03DB /* Pods_Making_MVC_Greate_Again.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39600B52F21EE4FA731C044 /* Pods_Making_MVC_Greate_Again.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		070B069420795F83008880C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		070B069720795FA6008880C8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		070B069920795FB8008880C8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		07A36232208C93630098740B /* KeyboardControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControllable.swift; sourceTree = "<group>"; };
+		07A36234208C941F0098740B /* KeyboardObserving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserving.swift; sourceTree = "<group>"; };
 		40AF08278A0FF2C3BB89B1E8 /* Pods-Making MVC Greate Again.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Making MVC Greate Again.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Making MVC Greate Again/Pods-Making MVC Greate Again.debug.xcconfig"; sourceTree = "<group>"; };
 		A39600B52F21EE4FA731C044 /* Pods_Making_MVC_Greate_Again.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Making_MVC_Greate_Again.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1EDEA9BB224469044F6188 /* Pods-Making MVC Greate Again.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Making MVC Greate Again.release.xcconfig"; path = "Pods/Target Support Files/Pods-Making MVC Greate Again/Pods-Making MVC Greate Again.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,8 +86,8 @@
 		070B069620795F98008880C8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				070B069220795F43008880C8 /* View.swift */,
-				070B068220795EFB008880C8 /* ViewController.swift */,
+				07A36236208C95C40098740B /* Protocols */,
+				07A36237208C95D60098740B /* Classes */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -94,6 +98,24 @@
 				070B069420795F83008880C8 /* Extensions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		07A36236208C95C40098740B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				07A36232208C93630098740B /* KeyboardControllable.swift */,
+				07A36234208C941F0098740B /* KeyboardObserving.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		07A36237208C95D60098740B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				070B069220795F43008880C8 /* View.swift */,
+				070B068220795EFB008880C8 /* ViewController.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		6FC006ECCAF45E61DE0DABAE /* Frameworks */ = {
@@ -242,9 +264,11 @@
 			files = (
 				070B069A20795FB8008880C8 /* LoginViewController.swift in Sources */,
 				070B068320795EFB008880C8 /* ViewController.swift in Sources */,
+				07A36235208C941F0098740B /* KeyboardObserving.swift in Sources */,
 				070B068120795EFB008880C8 /* AppDelegate.swift in Sources */,
 				070B069320795F43008880C8 /* View.swift in Sources */,
 				070B069820795FA6008880C8 /* LoginView.swift in Sources */,
+				07A36233208C93630098740B /* KeyboardControllable.swift in Sources */,
 				070B069520795F83008880C8 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +409,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3VKVFB3SA;
 				INFOPLIST_FILE = "Making MVC Greate Again/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omaralbeik.Making-MVC-Greate-Again";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -401,7 +428,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3VKVFB3SA;
 				INFOPLIST_FILE = "Making MVC Greate Again/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.omaralbeik.Making-MVC-Greate-Again";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
