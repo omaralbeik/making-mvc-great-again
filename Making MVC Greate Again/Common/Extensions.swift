@@ -42,13 +42,10 @@ extension UIButton {
 }
 
 extension Notification {
-
-	var keyboardSize: CGSize? {
-		return (userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
-	}
-
-	var keyboardAnimationDuration: Double? {
-		return userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-	}
-
+    var keyboardSize: CGSize? {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+    }
+    var keyboardAnimationDuration: Double? {
+        return userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+    }
 }
