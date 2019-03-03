@@ -82,28 +82,28 @@ extension KeyboardObserving where Self: UIViewController {
     
     /// Register for UIKeyboard notifications.
     func registerForKeyboardEvents() {
-        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
-            self.keyboardWillShow(notification)
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { [weak self] (notification) in
+            self?.keyboardWillShow(notification)
         }
         
-        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: nil) { notification in
-            self.keyboardDidShow(notification)
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: nil) { [weak self] (notification) in
+            self?.keyboardDidShow(notification)
         }
         
-        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
-            self.keyboardWillHide(notification)
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { [weak self] (notification) in
+            self?.keyboardWillHide(notification)
         }
         
-        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: nil) { notification in
-            self.keyboardDidHide(notification)
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: nil) { [weak self] (notification) in
+            self?.keyboardDidHide(notification)
         }
         
-        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: nil) { notification in
-            self.keyboardWillChangeFrame(notification)
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: nil) { [weak self] (notification) in
+            self?.keyboardWillChangeFrame(notification)
         }
         
-        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidChangeFrameNotification, object: nil, queue: nil) { notification in
-            self.keyboardDidChangeFrame(notification)
+        _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidChangeFrameNotification, object: nil, queue: nil) { [weak self] (notification) in
+            self?.keyboardDidChangeFrame(notification)
         }
     }
     
